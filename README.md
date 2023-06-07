@@ -1,2 +1,5 @@
-# Clippy
-Productivity app which groups similar types of goals together into different templates/environments. For each area of study, there are different environments for different types of goals, and each environment has its own unique look and tools for tackling these goals
+# clippy
+
+A new flutter project: Centralized hub for productivity management with different themes and toolkits available to create
+the right ambience for goal tracking and task completion.
+
