@@ -3,12 +3,21 @@ import 'package:clippy/src/global_things/application/global_states.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'src/common_widgets/home.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
 
 //code in MyApp sets up whole app, creates app wide state, names app, defines
 //visual theme and sets home widget (starting point of your app)
 
+
 //run, debug, profile
-void main() {
+void main() async {
+
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    name:'Clippy001',
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(MyApp());
 }
 
