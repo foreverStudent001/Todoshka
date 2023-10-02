@@ -1,5 +1,5 @@
+import 'package:clippy/src/core_features/auth/presentation/sign_in_screen.dart';
 import 'package:clippy/src/pages/presentation/primary/first_page.dart';
-import 'package:clippy/src/pages/presentation/primary/second_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentPage = 0;
-  static List<StatelessWidget> pages = [FirstPage(), SecondPage()];
+  static List<StatefulWidget> pages = [FirstPage(), SignInScreen()];
 
   @override
   Widget build(BuildContext context) {
