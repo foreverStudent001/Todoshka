@@ -24,8 +24,9 @@ class AuthRepo {
     required String password,
   }) async {
     try {
-      await FirebaseAuth.instance
+      final response = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
+      print(response);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         throw Exception('No user found for that email.');
@@ -47,7 +48,8 @@ class AuthRepo {
         idToken: googleAuth?.idToken,
       );
 
-      await FirebaseAuth.instance.signInWithCredential(credential);
+      final response = await FirebaseAuth.instance.signInWithCredential(credential);
+      print(response);
     } catch (e) {
       throw Exception(e.toString());
     }

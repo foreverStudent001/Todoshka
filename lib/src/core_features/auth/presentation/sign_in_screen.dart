@@ -30,7 +30,7 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[300],
+      backgroundColor: Colors.transparent,
       body: BlocListener<AuthBloc, AuthStates>(
         listener: (context, state) {
           print(state);
@@ -62,7 +62,6 @@ class _SignInScreenState extends State<SignInScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         const SizedBox(height: 15),
-
                         // welcome back, you've been missed!
                         Text(
                           'Welcome back you\'ve been missed!',
@@ -115,7 +114,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           },
                         ),
 
-                        const SizedBox(height: 50),
+                        const SizedBox(height: 15),
 
                         // or continue with
                         Padding(
@@ -166,8 +165,6 @@ class _SignInScreenState extends State<SignInScreen> {
                           ],
                         ),
                         const SizedBox(height: 5),
-
-                        // not a member? register now
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
