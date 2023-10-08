@@ -1,5 +1,6 @@
 import 'package:clippy/src/common_widgets/buttons/simple_button.dart';
 import 'package:clippy/src/common_widgets/fields/simple_textfield.dart';
+import 'package:clippy/src/common_widgets/home.dart';
 import 'package:clippy/src/core_features/auth/application/bloc/auth_bloc.dart';
 import 'package:clippy/src/core_features/auth/presentation/profile_screen.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,14 +31,26 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
+        title: const Text("Clippy", style: TextStyle()),
+        leading: BackButton(
+          onPressed: () => {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            )
+          },
+        ),
+      ),
       body: BlocListener<AuthBloc, AuthStates>(
         listener: (context, state) {
           print(state);
           if (state is Authenticated) {
             // Navigating to the dashboard screen if the user is authenticated
-            Navigator.of(context)
-                .pushReplacementNamed('/');
+            Navigator.of(context).pushReplacementNamed('/');
           }
           if (state is AuthError) {
             // Showing the error message if the user has entered invalid credentials
@@ -188,9 +201,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
               ),
             );
-          }else{
+          } else {
             WidgetsBinding.instance.addPostFrameCallback((_) {
-              Navigator.pushReplacement(context, MaterialPageRoute(builder: (_) => ProfileScreen()));
+              Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (_) => ProfileScreen()));
             });
           }
           return Container();

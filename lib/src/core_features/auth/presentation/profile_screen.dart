@@ -1,6 +1,7 @@
 import 'package:clippy/src/common_widgets/avatar/display_image.dart';
 import 'package:clippy/src/common_widgets/buttons/simple_button.dart';
 import 'package:clippy/src/common_widgets/fields/simple_textfield.dart';
+import 'package:clippy/src/common_widgets/home.dart';
 import 'package:clippy/src/core_features/auth/application/bloc/auth_bloc.dart';
 import 'package:clippy/src/core_features/auth/presentation/sign_in_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,16 +22,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final user = FirebaseAuth.instance.currentUser!;
     final TextEditingController _emailController =
         TextEditingController(text: '${user.email}');
-    final TextEditingController _photoController =
-        TextEditingController(text: user.photoURL  != null ?'${user.photoURL}' : '');
-    final TextEditingController _nameController =
-    TextEditingController(text: user.displayName != null ? '${user.displayName}' : '');
+    final TextEditingController _photoController = TextEditingController(
+        text: user.photoURL != null ? '${user.photoURL}' : '');
+    final TextEditingController _nameController = TextEditingController(
+        text: user.displayName != null ? '${user.displayName}' : '');
 
     print(user);
     return Scaffold(
       appBar: AppBar(
         leading: BackButton(
-          onPressed: () => {Navigator.pop(context)},
+          onPressed: () => {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => HomePage(),
+              ),
+            )
+          },
         ),
         actions: [
           IconButton(
@@ -42,7 +49,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
         title: const Text("Clippy", style: TextStyle()),
       ),
       body: SingleChildScrollView(
-
         child: BlocListener<AuthBloc, AuthStates>(
           listener: (context, state) {
             if (state is UnAuthenticated) {
@@ -72,13 +78,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: <Widget>[
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.only(left: 30),
+                                        padding: const EdgeInsets.only(
+                                            left: 30, top: 30),
                                         child: Text(
                                           'Image Url:',
-                                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 16),
                                         ),
                                       ),
                                       const SizedBox(height: 8),
@@ -98,9 +108,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     },
                     child: DisplayImage(
                       imagePath: '${user.photoURL}',
-                      onPressed: () {
-
-                      },
+                      onPressed: () {},
                     ),
                   ),
                   Column(
@@ -110,7 +118,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         padding: const EdgeInsets.only(left: 30),
                         child: Text(
                           'Name:',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -129,7 +138,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         padding: const EdgeInsets.only(left: 30),
                         child: Text(
                           'Email:',
-                          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 16),
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -140,7 +150,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                     ],
                   ),
-
                   const SizedBox(height: 20),
                   SimpleButton(
                     label: 'Save',

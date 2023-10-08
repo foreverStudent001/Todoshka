@@ -23,6 +23,8 @@ dependencies:
   firebase_auth:
   email_validator:
   font_awesome_flutter:
+  flutter_staggered_grid_view:
+  circular_menu :
 
 dev_dependencies:
   flutter_test:
