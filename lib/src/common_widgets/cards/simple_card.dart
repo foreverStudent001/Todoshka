@@ -17,7 +17,7 @@ class SimpleCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 200,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(25)),
@@ -34,12 +34,18 @@ class SimpleCard extends StatelessWidget {
                   flex: 2,
                   child: Row(
                     children: [
-                      Text(title,
-                          style: TextStyle(
+                      Expanded(
+                        child: Text(title,
+                            softWrap: false,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
                               fontSize: 25,
                               letterSpacing: 1.0,
-                              fontWeight: FontWeight.w600),
-                          textAlign: TextAlign.center),
+                              fontWeight: FontWeight.w600,
+                            ),
+                            textAlign: TextAlign.start),
+                      ),
                     ],
                   ),
                 ),
@@ -48,14 +54,14 @@ class SimpleCard extends StatelessWidget {
                   flex: 4,
                   child: Row(
                     children: [
-                      Flexible(
+                      Expanded(
                         child: Text(description,
                             softWrap: false,
                             maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
                             style: TextStyle(
                               fontSize: 20,
                               letterSpacing: 1.0,
-                              overflow: TextOverflow.ellipsis,
                             ),
                             textAlign: TextAlign.start),
                       ),
@@ -73,15 +79,13 @@ class SimpleCard extends StatelessWidget {
                             style: TextStyle(
                                 fontSize: 15,
                                 letterSpacing: 1.0,
-                                color: BlocProvider
-                                    .of<GlobalBlocs>(context)
-                                    .state
-                                    .themeMode
-                                    .name ==
-                                    'dark'
+                                color: BlocProvider.of<GlobalBlocs>(context)
+                                            .state
+                                            .themeMode
+                                            .name ==
+                                        'dark'
                                     ? Colors.white.withOpacity(0.6)
-                                    : Colors.black.withOpacity(0.6)
-                            ),
+                                    : Colors.black.withOpacity(0.6)),
                             textAlign: TextAlign.start),
                       ),
                     ],
