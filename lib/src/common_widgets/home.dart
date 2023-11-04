@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int currentPage = 0;
-  static List<StatefulWidget> pages = [ListsView(), SignInScreen()];
+  static List<Widget> pages = [ListsView(), SignInScreen()];
 
   @override
   Widget build(BuildContext context) {
