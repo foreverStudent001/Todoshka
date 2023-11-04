@@ -4,6 +4,8 @@ import 'package:firebase_core/firebase_core.dart' show FirebaseOptions;
 import 'package:flutter/foundation.dart'
     show defaultTargetPlatform, kIsWeb, TargetPlatform;
 
+import 'env.dart';
+
 /// Default [FirebaseOptions] for use with your Firebase apps.
 ///
 /// Example:
@@ -29,12 +31,12 @@ class DefaultFirebaseOptions {
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
+              'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -44,44 +46,42 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyChhZpsM4GU9XidNfzbqFlgtgmVSnvJft4',
-    appId: '1:42604918668:web:18558b556d24fb6c1d48a9',
-    messagingSenderId: '42604918668',
-    projectId: 'clippy001-d7445',
-    authDomain: 'clippy001-d7445.firebaseapp.com',
-    databaseURL: 'https://clippy001-d7445-default-rtdb.firebaseio.com',
-    storageBucket: 'buckets/clippy001-d7445.appspot.com',
-    measurementId: 'G-RYBENBG1LM',
+    apiKey: Env.firebaseWebApiKey,
+    appId: Env.firebaseWebAppId,
+    messagingSenderId: Env.firebaseWebSenderId,
+    projectId: Env.firebaseWebProjectId,
+    authDomain: Env.firebaseWebAuthDomain,
+    databaseURL: Env.firebaseWebDatabaseUrl,
+    storageBucket: Env.firebaseWebStorageBucket,
+    measurementId: Env.firebaseWebMeasurementId,
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyCp0Mx0GNm89yEJiC0phKp-YMykaTvr_0U',
-    appId: '1:42604918668:android:c9e17ec8d626bea71d48a9',
-    messagingSenderId: '42604918668',
-    projectId: 'clippy001-d7445',
-    databaseURL: 'https://clippy001-d7445-default-rtdb.firebaseio.com',
-    storageBucket: 'buckets/clippy001-d7445.appspot.com',
+    apiKey: Env.firebaseAndroidApiKey,
+    appId: Env.firebaseAndroidAppId,
+    messagingSenderId: Env.firebaseAndroidSenderId,
+    projectId: Env.firebaseAndroidProjectId,
+    databaseURL: Env.firebaseAndroidDatabaseUrl,
+    storageBucket: Env.firebaseAndroidStorageBucket,
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAdu3UwExYlnu6LDMZcqQ2iMGUOfQxMBtE',
-    appId: '1:42604918668:ios:6d148cba7e08ee711d48a9',
-    messagingSenderId: '42604918668',
-    projectId: 'clippy001-d7445',
-    databaseURL: 'https://clippy001-d7445-default-rtdb.firebaseio.com',
-    storageBucket: 'buckets/clippy001-d7445.appspot.com',
-    iosClientId: '42604918668-f10m30ou536mutrdle1pcnuvq205qnh4.apps.googleusercontent.com',
-    iosBundleId: 'com.example.clippy',
+    apiKey: Env.firebaseIosApiKey,
+    appId: Env.firebaseIosAppId,
+    messagingSenderId: Env.firebaseIosSenderId,
+    projectId: Env.firebaseIosProjectId,
+    databaseURL: Env.firebaseIosDatabaseUrl,
+    storageBucket: Env.firebaseIosStorageBucket,
+    iosBundleId: Env.firebaseIosBundleId,
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAdu3UwExYlnu6LDMZcqQ2iMGUOfQxMBtE',
-    appId: '1:42604918668:ios:5be7b4646a85c2e21d48a9',
-    messagingSenderId: '42604918668',
-    projectId: 'clippy001-d7445',
-    databaseURL: 'https://clippy001-d7445-default-rtdb.firebaseio.com',
-    storageBucket: 'buckets/clippy001-d7445.appspot.com',
-    iosClientId: '42604918668-u6f330622qq19bb26jlddmu8pmlkrj0d.apps.googleusercontent.com',
-    iosBundleId: 'com.example.clippy.RunnerTests',
+    apiKey: Env.firebaseMacosApiKey,
+    appId: Env.firebaseMacosAppId,
+    messagingSenderId: Env.firebaseMacosSenderId,
+    projectId: Env.firebaseMacosProjectId,
+    databaseURL: Env.firebaseMacosDatabaseUrl,
+    storageBucket: Env.firebaseMacosStorageBucket,
+    iosBundleId: Env.firebaseMacosBundleId,
   );
 }
