@@ -119,17 +119,24 @@ class _EditListState extends State<EditList> with SnackBarMixin {
             )
           ],
         ),
-        body: Column(
-          children: [
-            QuillToolbar.basic(controller: controller),
-            Expanded(
-              child: QuillEditor.basic(
-                controller: controller,
-                readOnly: false, // true for view only mode
-                padding: EdgeInsets.all(8),
-              ),
-            )
-          ],
+        body: QuillProvider(
+          configurations: QuillConfigurations(
+            controller: controller,
+            sharedConfigurations: const QuillSharedConfigurations(),
+          ),
+          child: Column(
+            children: [
+              const QuillToolbar(),
+              Expanded(
+                child: QuillEditor.basic(
+                  configurations: const QuillEditorConfigurations(
+                    readOnly: false, // true for view only mode
+                    padding: EdgeInsets.all(8),
+                  ),
+                ),
+              )
+            ],
+          ),
         ));
   }
 }
