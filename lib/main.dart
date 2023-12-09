@@ -4,27 +4,63 @@ import 'package:clippy/src/core_features/todo_list/application/bloc/lists_bloc.d
 import 'package:clippy/src/core_features/todo_list/application/reposetory/ListsRepo.dart';
 import 'package:clippy/src/global_things/application/global_blocs.dart';
 import 'package:clippy/src/global_things/application/global_states.dart';
-import 'package:flutter/material.dart';
+import 'package:clippy/src/global_things/presentation/controllers/theme_controller.dart';
+import 'package:clippy/src/global_things/presentation/themes/app_dark_theme.dart';
+import 'package:clippy/src/global_things/presentation/themes/app_light_theme.dart';
+import 'package:clippy/src/pages/presentation/screens/data_uploader_screen.dart';
+import 'package:clippy/src/pages/presentation/screens/introduction/introduction.dart';
+import 'package:clippy/src/pages/presentation/screens/splash_screen.dart';
+import 'package:clippy/src/utils/bindings/initial_bindings.dart';
+import 'package:clippy/src/utils/routes/app_routes.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
 import 'src/common_widgets/home.dart';
+
+import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'package:get/get.dart';
 
 //code in MyApp sets up whole app, creates app wide state, names app, defines
 //visual theme and sets home widget (starting point of your app)
 
 
+
+
 //run, debug, profile
-void main() async {
+
+void main(){
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  InitialBindings().dependencies(); //injecting the injection into here
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+      theme: Get.find<ThemeController>().darkTheme, //todo: toggle switch
+      getPages: AppRoutes.routes(),
+    );
+  }
+}
+
+/*
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(GetMaterialApp(home:DataUploaderScreen()));
+}*/
+
+
+
+//excess
+/*class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryProvider(
@@ -82,6 +118,6 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
+}*/
 
 //other stuff here

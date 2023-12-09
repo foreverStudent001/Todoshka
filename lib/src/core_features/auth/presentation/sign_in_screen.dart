@@ -3,7 +3,6 @@ import 'package:clippy/src/common_widgets/fields/simple_textfield.dart';
 import 'package:clippy/src/common_widgets/home.dart';
 import 'package:clippy/src/core_features/auth/application/bloc/auth_bloc.dart';
 import 'package:clippy/src/core_features/auth/presentation/profile_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';

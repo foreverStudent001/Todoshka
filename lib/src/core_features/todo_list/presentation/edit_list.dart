@@ -47,6 +47,7 @@ class _EditListState extends State<EditList> with SnackBarMixin {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     var parseDescription = jsonDecode(_description ?? '[{}]');
     QuillController controller = _description != null

@@ -33,12 +33,12 @@ class ListsRepo {
     try {
       final data = await FirebaseFirestore.instance.collection('lists').get();
 
-      data.docs.forEach((element) {
+      for (var element in data.docs) {
         var list = element.data();
         list['id'] = element.id;
         print(list);
-        return gottenList.add(Lists.fromJson(list));
-      });
+        continue;
+      }
       return gottenList;
     } on FirebaseException catch (e) {
       print("Error adding to Lists: '${e.code}': ${e.message}");

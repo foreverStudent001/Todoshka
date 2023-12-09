@@ -23,6 +23,7 @@ class _ListsViewState extends State<ListsView> {
     BlocProvider.of<ListsBloc>(context).add(GetData());
   }
 
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.transparent,

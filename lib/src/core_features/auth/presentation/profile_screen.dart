@@ -20,11 +20,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     // Getting the user from the FirebaseAuth Instance
     final user = FirebaseAuth.instance.currentUser!;
-    final TextEditingController _emailController =
+    final TextEditingController emailController =
         TextEditingController(text: '${user.email}');
-    final TextEditingController _photoController = TextEditingController(
+    final TextEditingController photoController = TextEditingController(
         text: user.photoURL != null ? '${user.photoURL}' : '');
-    final TextEditingController _nameController = TextEditingController(
+    final TextEditingController nameController = TextEditingController(
         text: user.displayName != null ? '${user.displayName}' : '');
 
     print(user);
@@ -93,7 +93,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                       ),
                                       const SizedBox(height: 8),
                                       SimpleField(
-                                        controller: _photoController,
+                                        controller: photoController,
                                         hintText: 'Url',
                                         obscureText: false,
                                       ),
@@ -124,7 +124,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const SizedBox(height: 8),
                       SimpleField(
-                        controller: _nameController,
+                        controller: nameController,
                         hintText: 'Name',
                         obscureText: false,
                       ),
@@ -144,7 +144,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       ),
                       const SizedBox(height: 8),
                       SimpleField(
-                        controller: _emailController,
+                        controller: emailController,
                         hintText: 'Email',
                         obscureText: false,
                       ),
@@ -154,9 +154,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   SimpleButton(
                     label: 'Save',
                     onTap: () => {
-                      user.updateDisplayName(_nameController.text),
-                      user.updateEmail(_emailController.text),
-                      user.updatePhotoURL(_photoController.text)
+                      user.updateDisplayName(nameController.text),
+                      user.updateEmail(emailController.text),
+                      user.updatePhotoURL(photoController.text)
                     },
                     icon: Icons.save,
                   ),
