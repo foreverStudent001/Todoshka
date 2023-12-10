@@ -6,7 +6,7 @@ class InitialBindings implements Bindings{
   @override
   void dependencies(){
     //inject controllers
-    Get.put(ThemeController());
     Get.put(AuthController(), permanent: true); //use permanent to keep events in memory
+    Get.put(ThemeController());
   }
 }

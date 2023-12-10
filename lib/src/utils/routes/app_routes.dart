@@ -14,11 +14,9 @@ class AppRoutes{
     GetPage(
       name: "/home",
       page: () => const HomeScreen(),
-      binding: BindingsBuilder((){
+      binding: BindingsBuilder(() {
         Get.put(QuestionPaperController());
-      })
-    )
-
+      })),
 
   ];
 }
