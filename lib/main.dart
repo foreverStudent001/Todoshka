@@ -25,12 +25,13 @@ import 'package:get/get.dart';
 //visual theme and sets home widget (starting point of your app)
 
 
-
-
 //run, debug, profile
 
-void main(){
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   InitialBindings().dependencies(); //injecting the injection into here
   runApp(MyApp());
 }

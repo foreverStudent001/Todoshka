@@ -38,9 +38,9 @@ class QuestionPaperModel {
         //cast as string to be sure it is string
         title = json['title'],
         imageUrl = json['image_url'],
-        description = json['Description'],
+        description = json['description'], //prev: description
         timeSeconds = json['time_seconds'],
-        questionCount = json['question_count'] as int,
+        questionCount = json['questions_count'] as int, //prev: question_count
         questions = [];
 
   Map<String, dynamic> toJson() {
