@@ -8,12 +8,12 @@ class AppRoutes{
   static List<GetPage> routes()=>[
     //backslash here refers to first screen of whole app
     GetPage(name: "/", page: ()=> SplashScreen()),
-    GetPage(name:"/introduction",page:()=>AppIntroductionScreen(),
+    GetPage(name:"/introduction",page:()=> const AppIntroductionScreen(),
     ),
 
     GetPage(
-      name: "/home",
-      page: () => const HomeScreen(),
+      name: '/home', //AppIntroductionScreen.routeName,
+      page: () => const AppIntroductionScreen(),
       binding: BindingsBuilder(() {
         Get.put(QuestionPaperController());
       })),
