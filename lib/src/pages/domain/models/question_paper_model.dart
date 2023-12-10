@@ -1,19 +1,23 @@
 //note: build nested models from inside to outside of nested json (map) data structures
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class QuestionPaperModel {
-  String id; //?
+  String id;
   String title;
-  String imageUrl;
+  String ?imageUrl;
   String description;
-  int ?timeSeconds;
+  int? timeSeconds;
   List<Questions>? questions;
+  int questionCount;
 
   QuestionPaperModel(
       {required this.id,
       required this.title,
-      required this.imageUrl,
+      this.imageUrl,
       required this.description,
       required this.timeSeconds,
+      required this.questionCount,
       this.questions});
 
   QuestionPaperModel.fromJson(Map<String, dynamic> json)
@@ -23,10 +27,21 @@ class QuestionPaperModel {
         imageUrl = json['image_url'] as String,
         description = json['Description'] as String,
         timeSeconds = json['time_seconds'],
+        questionCount = 0,
         questions = (json['questions'] as List)
             .map((dynamic e) => Questions.fromJson(e as Map<String, dynamic>))
             .toList(); //cast as map b/c data can be complex
   //make dynamic e to avoid potential errors
+
+  QuestionPaperModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> json)
+      : id = json.id,
+        //cast as string to be sure it is string
+        title = json['title'],
+        imageUrl = json['image_url'],
+        description = json['Description'],
+        timeSeconds = json['time_seconds'],
+        questionCount = json['question_count'] as int,
+        questions = [];
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
@@ -57,8 +72,9 @@ class Questions {
   Questions.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         question = json['question'],
-        answers =
-            (json['answers'] as List).map((e) => Answers.fromJson(e as Map<String, dynamic>)).toList(),
+        answers = (json['answers'] as List)
+            .map((e) => Answers.fromJson(e as Map<String, dynamic>))
+            .toList(),
         correctAnswer = json['correct_answer'];
 
   Map<String, dynamic> toJson() {
