@@ -7,6 +7,8 @@ import '../../../../global_things/presentation/themes/app_colors.dart';
 class AppIntroductionScreen extends StatelessWidget {
   const AppIntroductionScreen({Key? key}): super(key: key);
 
+  static const String routeName = '/introduction';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +18,7 @@ class AppIntroductionScreen extends StatelessWidget {
             //containers optimal for alignment
             child: Padding(
               /*padding: EdgeInsets.all(8.0),*/
-              padding: EdgeInsets.symmetric(horizontal: Get.width*0.2),//fit based on width of screen  todo: fix whatever is causing error here
+              padding: EdgeInsets.symmetric(horizontal: Get.width*0.2),//fit based on width of screen
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -34,8 +36,8 @@ class AppIntroductionScreen extends StatelessWidget {
                   ),
                  const SizedBox(height:40),
                   AppCircleButton(
-                      onTap: () => null,
-                      child:const Icon(Icons.arrow_forward_ios, size: 35))
+                      onTap: () => Get.offAndToNamed("/home"),
+                      child:const Icon(Icons.arrow_forward, size: 35))
                 ],
 
               ),
