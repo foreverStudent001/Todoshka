@@ -2,7 +2,6 @@ import 'package:clippy/src/global_things/presentation/themes/app_dark_theme.dart
 import 'package:clippy/src/global_things/presentation/themes/app_light_theme.dart';
 import 'package:clippy/src/global_things/presentation/themes/ui_parameters.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 
 const Color onSurfaceTextColor = Colors.white;

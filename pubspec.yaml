@@ -52,3 +52,8 @@ flutter:
     - assets/DB/papers/
     - assets/icons/
     - assets/images1/
+
+  fonts:
+  - family: AppIcons
+    fonts:
+      - asset: assets/icons/AppIcons.ttf
