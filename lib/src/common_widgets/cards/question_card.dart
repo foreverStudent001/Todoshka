@@ -1,4 +1,3 @@
-//stack widget business
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clippy/src/global_things/presentation/themes/custom_text_styles.dart';
 import 'package:clippy/src/global_things/presentation/themes/ui_parameters.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/src/widgets/basic.dart';
 
+//stack widget
 
 class QuestionCard extends StatelessWidget {
   const QuestionCard({Key? key, required this.model}) : super(key: key);

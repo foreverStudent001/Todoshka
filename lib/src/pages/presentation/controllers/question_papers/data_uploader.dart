@@ -5,9 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'dart:convert';
-
 import '../../../data/firebase_ref/loading_status.dart';
-import '../../../data/firebase_ref/references.dart';
+
 
 //todo: should this be put under data folder?
 //DataUploader controller class. Called when app starts
@@ -16,15 +15,15 @@ class DataUploader extends GetxController {
   @override
   void onReady() {
     uploadData(); //method ideal for (for example) - uploading file only once or only at boot up
-    super
-        .onReady(); //upload data to firebase backend, only gets data when called
+    super.onReady(); //upload data to firebase backend, only gets data when called
   }
 
   //declare and get enum value from loading_status
   final loadingStatus = LoadingStatus.loading.obs; //use obs to make variable observable/reactive
 
 //body of uploadData method
-  Future<void> uploadData() async { //oc: loadingStatus is obs
+  Future<void> uploadData() async {
+    //oc: loadingStatus is obs
     loadingStatus.value = LoadingStatus.loading; //0
     final fireStore = FirebaseFirestore.instance;
     //declare variable to hold asset loaded

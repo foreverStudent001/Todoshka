@@ -1,13 +1,8 @@
-import 'dart:developer';
-
-import 'package:clippy/src/common_widgets/buttons/simple_button.dart';
 import 'package:clippy/src/global_things/presentation/themes/ui_parameters.dart';
-import 'package:clippy/src/pages/domain/models/question_paper_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../../common_widgets/cards/question_card.dart';
 import '../../controllers/question_papers/question_paper_controller.dart';
-import 'package:clippy/src/global_things/application/services/firebase_storage_service.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+
 class AuthController extends GetxController{ //the controller we inject into initial_bindings
   @override
   void onReady(){
