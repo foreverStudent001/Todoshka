@@ -22,12 +22,12 @@ class QuestionPaperController extends GetxController {
   Future<void> getAllPapers() async {
     List<String> imgName = ["biology", "chemistry", "maths", "physics"];
     try {
-      //get data from collection in questionPaperRF and save to data
+      //get data from firestore collection in questionPaperRF and save to data, returns map
       QuerySnapshot<Map<String, dynamic>> data = await questionPaperRF.get();
-
-      //return list of questionPaper
-      final paperList = data.docs.map((paper) => QuestionPaperModel.fromSnapshot(paper)).toList(); //.fromSnapshot method returns object
-
+      //loops thru collection, convert and return list of questionPaper
+      final paperList = data.docs
+          .map((paper) => QuestionPaperModel.fromSnapshot(paper))
+          .toList(); //.fromSnapshot method returns object
       allPapers.assignAll(paperList);
 
       for (var paper in paperList) {

@@ -15,13 +15,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //reference to controller
     QuestionPaperController _questionPaperController = Get.find();
+
     return Scaffold(
-        body: Column(
-          children: [
-            Obx(() => ListView.separated(
+            body: Obx(() => ListView.separated(
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
-                  log(_questionPaperController.allPapers[index] as String);
                   //controller contains model which is saved in allPapers. Returns model which we then access in question_card
                   return QuestionCard(
                     model: _questionPaperController.allPapers[index],
@@ -31,7 +29,6 @@ class HomeScreen extends StatelessWidget {
                   return const SizedBox(height: 20);
                 },
                 itemCount: _questionPaperController.allPapers.length)), //
-          ],
-        ));
+        );
   }
 }

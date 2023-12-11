@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class QuestionPaperModel {
   String id;
   String title;
-  String ?imageUrl;
+  String? imageUrl;
   String description;
   int? timeSeconds;
   List<Questions>? questions;
@@ -25,7 +25,7 @@ class QuestionPaperModel {
         //cast as string to be sure it is string
         title = json['title'] as String,
         imageUrl = json['image_url'] as String,
-        description = json['Description'] as String,
+        description = json['description'] as String,
         timeSeconds = json['time_seconds'],
         questionCount = 0,
         questions = (json['questions'] as List)
@@ -38,7 +38,7 @@ class QuestionPaperModel {
         //cast as string to be sure it is string
         title = json['title'],
         imageUrl = json['image_url'],
-        description = json['description'], //prev: description
+        description = json['description'], //prev: Description
         timeSeconds = json['time_seconds'],
         questionCount = json['questions_count'] as int, //prev: question_count
         questions = [];

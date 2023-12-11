@@ -28,7 +28,7 @@ class QuestionCard extends StatelessWidget {
                       width: Get.width*0.15,
                       child: CachedNetworkImage(
                         //saves bandwidth, avoid unnecessary calls to server
-                        imageUrl: model.imageUrl!,
+                        imageUrl: model.imageUrl!, //for each index we have model and for that model we have image url
 
                         placeholder: (context, url) => Container(
                           alignment: Alignment.center,
