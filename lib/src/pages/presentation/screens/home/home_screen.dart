@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:clippy/src/common_widgets/buttons/simple_button.dart';
+import 'package:clippy/src/global_things/presentation/themes/ui_parameters.dart';
 import 'package:clippy/src/pages/domain/models/question_paper_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +19,7 @@ class HomeScreen extends StatelessWidget {
 
     return Scaffold(
             body: Obx(() => ListView.separated(
+                padding: UIParameters.mobileScreenPadding,
                 shrinkWrap: true,
                 itemBuilder: (BuildContext context, int index) {
                   //controller contains model which is saved in allPapers. Returns model which we then access in question_card

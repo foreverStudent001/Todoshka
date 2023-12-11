@@ -13,7 +13,7 @@ class AppIntroductionScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Container(
-            decoration: BoxDecoration(gradient:mainGradient(context)),
+            decoration: BoxDecoration(gradient:mainGradient()),
             alignment: Alignment.center,
             //containers optimal for alignment
             child: Padding(

@@ -2,6 +2,8 @@ import 'package:clippy/src/global_things/presentation/themes/app_dark_theme.dart
 import 'package:clippy/src/global_things/presentation/themes/app_light_theme.dart';
 import 'package:clippy/src/global_things/presentation/themes/ui_parameters.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
 
 const Color onSurfaceTextColor = Colors.white;
 
@@ -24,6 +26,6 @@ const mainGradientDark = LinearGradient(
 );
 
 //check what mode we are in so we can directly call it
-LinearGradient mainGradient(BuildContext context)=>
-    UIParameters.isDarkMode(context)?mainGradientDark:mainGradientLight;
+LinearGradient mainGradient()=>
+    UIParameters.isDarkMode()? mainGradientDark : mainGradientLight;
 

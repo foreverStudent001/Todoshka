@@ -1,8 +1,11 @@
 //stack widget business
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:clippy/src/global_things/presentation/themes/custom_text_styles.dart';
+import 'package:clippy/src/global_things/presentation/themes/ui_parameters.dart';
 import 'package:clippy/src/pages/domain/models/question_paper_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter/src/widgets/basic.dart';
 
 
 class QuestionCard extends StatelessWidget {
@@ -18,6 +21,7 @@ class QuestionCard extends StatelessWidget {
       child: Stack(
           children: [
             Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
@@ -40,7 +44,26 @@ class QuestionCard extends StatelessWidget {
                         //show no image available image on error loading
                       ),
                     ),
-                  ))],
+                  )),
+                const SizedBox(width:12),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      model.title,
+                      style: cartTitles(context), //calls custom_text_styles
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top:10, bottom:15),
+                      child: Text( //another text widget
+                        model.description
+                      ),
+                    )
+                  ],
+                ),
+              )
+                  ],
             )
           ],
       ),
