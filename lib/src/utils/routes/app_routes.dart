@@ -15,7 +15,7 @@ class AppRoutes{
       name: '/home', //AppIntroductionScreen.routeName,
       page: () => const HomeScreen(), //prev: AppIntroductionScreen.routeName()
       binding: BindingsBuilder(() {
-        Get.put(QuestionPaperController());
+        BindingsBuilder.put(QuestionPaperController() as InstanceBuilderCallback);
       })),
 
   ];

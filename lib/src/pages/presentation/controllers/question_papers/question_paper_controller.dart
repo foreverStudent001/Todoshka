@@ -27,15 +27,15 @@ class QuestionPaperController extends GetxController {
 
       //return list of questionPaper
       final paperList = data.docs.map((paper) => QuestionPaperModel.fromSnapshot(paper)).toList(); //.fromSnapshot method returns object
-      inspect(paperList);
-      /*inspect(paperList); //
+
       allPapers.assignAll(paperList);
 
       for (var paper in paperList) {
         final imgUrl = await Get.find<FirebaseStorageService>().getImage(paper.title);
        paper.imageUrl = imgUrl;
       }
-      allPapers.assignAll(paperList);*/ //no chance for duplication
+      allPapers.assignAll(paperList);//no chance for duplication
+
     } catch (e) {
       print(e); //'e' for error
     }

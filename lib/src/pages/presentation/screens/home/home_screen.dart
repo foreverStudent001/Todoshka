@@ -18,11 +18,9 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
         body: Column(
           children: [
-            SimpleButton(onTap: () => {_questionPaperController.getAllPapers()}), //
-
             Obx(() => ListView.separated(
                 shrinkWrap: true,
-                itemBuilder: (BuildContext, int index) {
+                itemBuilder: (BuildContext context, int index) {
                   log(_questionPaperController.allPapers[index] as String);
                   //controller contains model which is saved in allPapers. Returns model which we then access in question_card
                   return QuestionCard(
@@ -32,7 +30,7 @@ class HomeScreen extends StatelessWidget {
                 separatorBuilder: (BuildContext context, int index) {
                   return const SizedBox(height: 20);
                 },
-                itemCount: _questionPaperController.allPapers.length)),
+                itemCount: _questionPaperController.allPapers.length)), //
           ],
         ));
   }
