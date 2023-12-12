@@ -43,6 +43,9 @@ class QuestionPaperModel {
         questionCount = json['questions_count'] as int, //prev: question_count
         questions = [];
 
+  //method
+  String timeInMinutes() => "${(timeSeconds!/60).ceil()} mins";
+
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;

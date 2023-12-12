@@ -32,7 +32,7 @@ class QuestionCard extends StatelessWidget {
                 ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: ColoredBox(
-                      color: Theme.of(context).primaryColor.withOpacity(0.2),
+                      color: Theme.of(context).primaryColor.withOpacity(0.1),
                       child: SizedBox(
                         height: Get.width * 0.15,
                         width: Get.width * 0.15,
@@ -98,7 +98,7 @@ class QuestionCard extends StatelessWidget {
                                     .primaryColor
                               //.withOpacity(0.3),
                             ),
-                            text: Text('${model.questionCount} questions',
+                            text: Text(model.timeInMinutes(),
                               style: detailText.copyWith(
                                   color: Get.isDarkMode
                                       ? Colors.white
