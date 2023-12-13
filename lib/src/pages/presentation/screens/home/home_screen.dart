@@ -3,6 +3,7 @@ import 'package:clippy/src/global_things/presentation/controllers/zoom_drawer_co
 import 'package:clippy/src/global_things/presentation/themes/app_colors.dart';
 import 'package:clippy/src/global_things/presentation/themes/custom_text_styles.dart';
 import 'package:clippy/src/global_things/presentation/themes/ui_parameters.dart';
+import 'package:clippy/src/pages/presentation/screens/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,12 @@ class HomeScreen extends GetView<MyZoomDrawerController> { //injecting controlle
       body: GetBuilder<MyZoomDrawerController>(builder:(_){
         return ZoomDrawer(
           controller: _.zoomDrawerController,
-          menuScreen: Text("Hi there", style: TextStyle(color: Colors.red),),
+          showShadow: true,
+          angle: 0.0,
+          style: DrawerStyle.defaultStyle,
+          menuBackgroundColor: Colors.white.withOpacity(0.5),
+          slideWidth: MediaQuery.of(context).size.width*0.6,
+          menuScreen: MyMenuScreen(),
           mainScreen: Container(
             decoration: BoxDecoration(gradient: mainGradient()),
 
