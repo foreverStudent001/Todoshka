@@ -1,3 +1,4 @@
+import 'package:clippy/src/global_things/presentation/controllers/zoom_drawer_controller.dart';
 import 'package:clippy/src/pages/presentation/controllers/question_papers/question_paper_controller.dart';
 import 'package:clippy/src/pages/presentation/screens/home/home_screen.dart';
 import 'package:clippy/src/pages/presentation/screens/introduction/introduction.dart';
@@ -16,7 +17,9 @@ class AppRoutes{
       page: () => const HomeScreen(), //prev: AppIntroductionScreen.routeName()
       binding: BindingsBuilder(() {
         Get.lazyPut(()=>QuestionPaperController());
-      })),
+        Get.put(MyZoomDrawerController());
+      })
+    ),
 
   ];
 }
