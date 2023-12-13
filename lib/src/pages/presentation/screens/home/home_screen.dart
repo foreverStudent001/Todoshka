@@ -16,73 +16,75 @@ class HomeScreen extends GetView<QuestionPaperController> {
   Widget build(BuildContext context) {
     //reference to controller
     QuestionPaperController questionPaperController = Get.find();
-    return Container(
-      decoration: BoxDecoration(gradient: mainGradient()),
+    return Scaffold(
+      body: Container(
+        decoration: BoxDecoration(gradient: mainGradient()),
 
-      child: SafeArea(
-        child: Column(
-          //top and bottom part of screen
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: EdgeInsets.all(mobileScreenPadding),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Icon(
-                    AppIcons.menuLeft,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 10),
-                    child: Row(
-                      children: [
-                        const Icon(
-                          AppIcons.peace,
-                        ),
-                        Text(
-                          "Please kill me",
-                          style: detailText.copyWith(color: onSurfaceTextColor),
-                        )
-                      ],
+        child: SafeArea(
+          child: Column(
+            //top and bottom part of screen
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.all(mobileScreenPadding),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Icon(
+                      AppIcons.menuLeft,
                     ),
-                  ),
-                  Text(
-                    "What's up b*tch?",
-                    style: headerText,
-                  )
-                ],
-              ),
-            ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
-                child: ContentArea(
-                  addPadding: false,
-                  child: Obx(() => ListView.separated(
-                        padding: UIParameters.mobileScreenPadding,
-                        itemCount: questionPaperController.allPapers.length,
-                        shrinkWrap: true,
-                        itemBuilder: (BuildContext context, int index) {
-                          //controller contains model which is saved in allPapers. Returns model which we then access in question_card
-                          return QuestionCard(
-                            model: questionPaperController.allPapers[index],
-                          );
-                        },
-                        separatorBuilder: (BuildContext context, int index) {
-                          return const SizedBox(height: 20);
-                        },
-                      )),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        children: [
+                          const Icon(
+                            AppIcons.peace,
+                          ),
+                          Text(
+                            "Please kill me",
+                            style: detailText.copyWith(color: onSurfaceTextColor),
+                          )
+                        ],
+                      ),
+                    ),
+                    Text(
+                      "What's up b*tch?",
+                      style: headerText,
+                    )
+                  ],
                 ),
               ),
-            )
-          ],
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: ContentArea(
+                    addPadding: false,
+                    child: Obx(() => ListView.separated(
+                      padding: UIParameters.mobileScreenPadding,
+                      itemCount: questionPaperController.allPapers.length,
+                      shrinkWrap: true,
+                      itemBuilder: (BuildContext context, int index) {
+                        //controller contains model which is saved in allPapers. Returns model which we then access in question_card
+                        return QuestionCard(
+                          model: questionPaperController.allPapers[index],
+                        );
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return const SizedBox(height: 20);
+                      },
+                    )),
+                  ),
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
   }
 }
 
-//note TODO: add scaffold otherwise text has yellow underline
+//note - add scaffold otherwise text has yellow underline

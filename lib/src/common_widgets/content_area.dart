@@ -21,8 +21,8 @@ class ContentArea extends StatelessWidget {
       child: Ink(
         decoration: BoxDecoration(color: customScaffoldColor(context)),
         padding: addPadding
-            ? const EdgeInsets.only(
-                top: mobileScreenPadding, //todo: ?
+            ? EdgeInsets.only(
+                top: mobileScreenPadding, //todo: was mobileScrenPadding but isn't working ?
                 left: mobileScreenPadding,
                 right: mobileScreenPadding)
             : EdgeInsets.zero,

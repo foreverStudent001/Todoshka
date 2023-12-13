@@ -12,7 +12,7 @@ import '../../global_things/presentation/themes/app_icons.dart';
 
 class QuestionCard extends StatelessWidget {
   const QuestionCard({Key? key, required this.model}) : super(key: key);
-  final QuestionPaperModel model;
+  final QuestionPaperModel? model;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class QuestionCard extends StatelessWidget {
                         width: Get.width * 0.15,
                         child: CachedNetworkImage(
                           //saves bandwidth, avoid unnecessary calls to server
-                          imageUrl: model.imageUrl!,
+                          imageUrl: model!.imageUrl ?? "assets/images1/app_splash_logo.png",
                           //for each index we have model and for that model we have image url
 
                           placeholder: (context, url) => Container(
@@ -59,13 +59,13 @@ class QuestionCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        model.title,
+                        model!.title,
                         style: cartTitles(context), //calls custom_text_styles
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 10, bottom: 15),
                         child: Text(//another text widget
-                            model.description),
+                            model!.description),
                       ),
                       Row(
                         children: [
@@ -78,7 +78,7 @@ class QuestionCard extends StatelessWidget {
                                         .primaryColor
                                         //.withOpacity(0.3),
                               ),
-                              text: Text('${model.questionCount} questions',
+                              text: Text('${model!.questionCount} questions',
                               style: detailText.copyWith(
                                 color: Get.isDarkMode
                                     ? Colors.white
@@ -98,7 +98,7 @@ class QuestionCard extends StatelessWidget {
                                     .primaryColor
                               //.withOpacity(0.3),
                             ),
-                            text: Text(model.timeInMinutes(),
+                            text: Text(model!.timeInMinutes(),
                               style: detailText.copyWith(
                                   color: Get.isDarkMode
                                       ? Colors.white
