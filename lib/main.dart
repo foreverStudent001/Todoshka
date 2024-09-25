@@ -1,12 +1,13 @@
 import 'package:clippy/pages/home/home.dart';
 import 'package:clippy/pages/user/user_profile.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:rive_splash_screen/rive_splash_screen.dart';
 
 void main() {
+  /*WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);*/
   runApp(const MyApp());
-}
-
-void test() {
 
 }
 
@@ -22,18 +23,18 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
-  ThemeMode _themeMode = ThemeMode.system;
+  ThemeMode _themeMode = ThemeMode.dark;
 
   void changeTheme(ThemeMode themeMode) {
     setState(() {
       _themeMode = themeMode;
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Todoshka',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.greenAccent),
@@ -47,7 +48,7 @@ class _MyAppState extends State<MyApp> {
         )
       ),
       darkTheme: ThemeData(
-          colorScheme: ColorScheme.dark(),
+          colorScheme: const ColorScheme.dark(primary: Colors.white),
           useMaterial3: true,
           elevatedButtonTheme: ElevatedButtonThemeData(
               style: ElevatedButton.styleFrom(
@@ -58,7 +59,13 @@ class _MyAppState extends State<MyApp> {
           )
       ),
       themeMode: _themeMode,
-      home: MyHomePage(title: 'Clippy', changeTheme: this.changeTheme, themeMode: _themeMode),
+      home: SplashScreen.navigate(
+        name: 'assets/animations/splashscreen.riv',
+        next: (context) => MyHomePage(title: 'Todoshka', changeTheme: changeTheme, themeMode: _themeMode),
+        until: () => Future.delayed(const Duration(seconds: 6)),
+        startAnimation: 'Timeline 1',
+        backgroundColor: const Color(0xFF353535),
+      ),
     );
   }
 }
@@ -72,9 +79,33 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+
+
 class _MyHomePageState extends State<MyHomePage> {
   int currentPage = 0;
   static const pages = [Home(), UserProfile()];
+
+
+  @override
+  void initState() {
+    super.initState();
+    /*initialization();*/
+  }
+
+  void initialization() async {
+    // This is where you can initialize the resources needed by your app while
+    // the splash screen is displayed.  Remove the following example because
+    // delaying the user experience is a bad design practice!
+    // ignore_for_file: avoid_print
+    /*print('ready in 3...');
+    await Future.delayed(const Duration(seconds: 1));
+    print('ready in 2...');
+    await Future.delayed(const Duration(seconds: 1));
+    print('ready in 1...');
+    await Future.delayed(const Duration(seconds: 1));
+    print('go!');*/
+    FlutterNativeSplash.remove();
+  }
 
   @override
   Widget build(BuildContext context) {
