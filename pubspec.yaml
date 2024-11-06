@@ -15,6 +15,9 @@ dependencies:
   flutter_native_splash: ^2.3.11
   rive_splash_screen: ^0.1.1
   get:
+  moon_design: ^0.47.3
+  carousel_slider: ^5.0.0
+  flutter_zoom_drawer: ^3.2.0
 
 dev_dependencies:
   flutter_test:

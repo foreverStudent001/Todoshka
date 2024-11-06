@@ -1,0 +1,4 @@
+class MenuRepository {
+
+  MenuRepository();
+}

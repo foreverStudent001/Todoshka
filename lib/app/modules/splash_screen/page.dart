@@ -8,9 +8,10 @@ class SplashScreenPage extends GetView {
   @override
   Widget build(BuildContext context) {
     return SplashScreen.callback(
+      backgroundColor: context.theme.colorScheme.background,
       name: 'assets/animations/splashscreen.riv',
       onSuccess: (data) {
-        Get.toNamed('/home');
+        Get.toNamed('/survey');
       },
       onError: (err, stack) {
         //error throw by until callback function

@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 
+import 'core/theme/app_theme.dart';
+
 void main() {
   /*
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -13,8 +15,8 @@ void main() {
   runApp(GetMaterialApp(
     initialRoute: Routes.INITIAL,
     getPages: AppPages.pages,
-    theme: ThemeData.light(),
-    darkTheme: ThemeData.dark(),
+    theme: lightMoon,
+    darkTheme: darkMoon,
     debugShowCheckedModeBanner: false,
   ));
 }
